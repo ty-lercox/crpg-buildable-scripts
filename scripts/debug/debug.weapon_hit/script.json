@@ -1,0 +1,16 @@
+{
+    "scriptId":  "debug.weapon_hit",
+    "title":  "Weapon Hit Debug (Buildable)",
+    "description":  "Toasts the hitter with tool/item details on onHit.",
+    "tags":  [
+                 "buildable",
+                 "debug",
+                 "hit",
+                 "onhit"
+             ],
+    "allowedApis":  [
+                        "*"
+                    ],
+    "status":  "draft",
+    "lifecycle":  "active"
+}

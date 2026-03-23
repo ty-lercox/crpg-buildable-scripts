@@ -1,0 +1,15 @@
+{
+  "scriptId": "ui.furnace_menu",
+  "title": "Furnace Menu",
+  "description": "Opens the furnace UI.",
+  "tags": [
+    "ui",
+    "furnace",
+    "menu"
+  ],
+  "allowedApis": [
+    "ui"
+  ],
+  "status": "draft",
+  "lifecycle": "active"
+}

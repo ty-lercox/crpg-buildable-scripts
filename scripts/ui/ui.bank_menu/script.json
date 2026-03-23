@@ -1,0 +1,15 @@
+{
+  "scriptId": "ui.bank_menu",
+  "title": "Bank Menu",
+  "description": "Opens the bank UI.",
+  "tags": [
+    "ui",
+    "bank",
+    "menu"
+  ],
+  "allowedApis": [
+    "ui"
+  ],
+  "status": "draft",
+  "lifecycle": "active"
+}

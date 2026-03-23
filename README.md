@@ -4,30 +4,33 @@ This repository is the Git-backed source of truth for curated CityRPG buildable 
 
 ## Package format
 
-Each managed script lives in its own leaf folder under `scripts/`. The leaf folder name is always the `scriptId`, and the cleaned IDs now follow a `category.subgroup.script_name` namespace:
+Each managed script lives in its own leaf folder under `scripts/`. The leaf folder name is always the `scriptId`, and the cleaned IDs now follow a flatter `category.script_name` namespace:
 
 ```text
-scripts/<group>/<subgroup>/<scriptId>/script.ts
-scripts/<group>/<subgroup>/<scriptId>/script.json
+scripts/<group>/<scriptId>/script.ts
+scripts/<group>/<scriptId>/script.json
 ```
 
 Current grouping examples:
 
-- `scripts/gathering/starter/gathering.starter.loose_log_pickup/`
-- `scripts/ui/civic/ui.civic.townhall_menu/`
-- `scripts/npc/dialogue/npc.dialogue.master_at_arms_kincaid/`
-- `scripts/user-owned/h6deXXhNHFGDsiqVGWDY/`
+- `scripts/gathering/gathering.loose_log_pickup/`
+- `scripts/gathering/gathering.tree_chop/`
+- `scripts/ui/ui.townhall_menu/`
+
+Legacy and local-only backups that should not publish stay outside the managed surface in `scripts_legacy/`, for example:
+
+- `scripts_legacy/local-only/user-owned/h6deXXhNHFGDsiqVGWDY/`
 
 `script.json` uses this shape:
 
 ```json
 {
-  "scriptId": "gathering.starter.loose_log_pickup",
-  "title": "Starter Gather Loose Log Pickup",
-  "description": "Loose starter log pickup with hide, respawn, and inventory grant behavior.",
-  "tags": ["starter", "gather", "pickup", "woodcutting"],
+  "scriptId": "gathering.loose_log_pickup",
+  "title": "Loose Log Pickup",
+  "description": "Loose log pickup with hide, respawn, and inventory grant behavior.",
+  "tags": ["gathering", "pickup", "woodcutting", "log"],
   "allowedApis": ["*"],
-  "status": "published",
+  "status": "draft",
   "lifecycle": "active"
 }
 ```
@@ -35,7 +38,9 @@ Current grouping examples:
 Planning-only manifest:
 
 - `imports/cleaned-script-id-plan.json`
-  Use this as the first-pass rename map from old Firestore IDs to the cleaned local IDs. It is documentation for now, not an input to the existing import CLI.
+  Use this as the first-pass rename map from old Firestore IDs to the cleaned local IDs.
+- `imports/script-id-migration.json`
+  Use this as the actual assignment-migration manifest when rewriting live `servers/{serverId}/buildableScripts` bindings to the cleaned IDs.
 
 Optional local-only field:
 
@@ -49,9 +54,10 @@ Optional local-only field:
 - `npm run scan-firestore -- --report artifacts/firestore-scan.json`
 - `npm run import-curated -- --manifest imports/initial-curated.json`
 - `npm run import-curated -- --all`
+- `npm run migrate-script-ids -- --dry-run --manifest imports/script-id-migration.json`
 - `npm run validate-repo`
 - `npm run sync-firestore -- --dry-run --report artifacts/sync-report.json`
-- `npm run sync-firestore -- --apply --only starter.gather.loose_log_pickup`
+- `npm run sync-firestore -- --apply --only gathering.loose_log_pickup`
 
 ## Firestore auth
 
@@ -69,12 +75,14 @@ Optional overrides:
 
 1. Run `scan-firestore` to inspect the current catalog and assignment usage.
 2. Review `imports/cleaned-script-id-plan.json` for the first-pass rename map.
-3. Update `imports/initial-curated.json` with the exact Firestore IDs to adopt when you want to import from Firestore.
-4. Run `import-curated` to materialize those scripts under grouped folders in `scripts/`.
-5. Review changes in Git, then use `sync-firestore --dry-run` to confirm the repo diff before any live publish.
+3. Use `imports/script-id-migration.json` when you need to move live buildable bindings from old IDs to cleaned IDs.
+4. Update `imports/initial-curated.json` with the exact Firestore IDs to adopt when you want to import from Firestore.
+5. Run `import-curated` to materialize those scripts under grouped folders in `scripts/`.
+6. Review changes in Git, then use `sync-firestore --dry-run` to confirm the repo diff before any live publish.
 
 ## Notes
 
 - Only IDs physically present in `scripts/` are GitHub-managed.
+- Backups under `scripts_legacy/` are intentionally excluded from publish and sync.
 - The sync tool never mutates unrelated Firestore script IDs.
 - V1 intentionally does not rewrite live `servers/{serverId}/buildableScripts` bindings.

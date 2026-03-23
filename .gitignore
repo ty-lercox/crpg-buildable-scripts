@@ -6,3 +6,4 @@ artifacts/*
 *.tmp
 *.local.json
 firestore-service-account.json
+scripts_legacy/

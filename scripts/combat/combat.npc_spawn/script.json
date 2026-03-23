@@ -1,0 +1,16 @@
+{
+    "scriptId":  "combat.npc_spawn",
+    "title":  "NPC Spawn",
+    "description":  "Spawns a hostile NPC encounter at begin play.",
+    "tags":  [
+                 "combat",
+                 "npc",
+                 "spawn"
+             ],
+    "allowedApis":  [
+                        "buildable",
+                        "ui"
+                    ],
+    "status":  "draft",
+    "lifecycle":  "active"
+}

@@ -1,0 +1,16 @@
+{
+    "scriptId":  "gathering.tree_chop",
+    "title":  "Tree Chop",
+    "description":  "Tree chopping loop with hit feedback, felling, loot, and respawn.",
+    "tags":  [
+                 "gathering",
+                 "woodcutting",
+                 "tree",
+                 "logs"
+             ],
+    "allowedApis":  [
+                        "*"
+                    ],
+    "status":  "draft",
+    "lifecycle":  "active"
+}

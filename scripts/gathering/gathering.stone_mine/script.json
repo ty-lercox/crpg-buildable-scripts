@@ -1,0 +1,15 @@
+{
+    "scriptId":  "gathering.stone_mine",
+    "title":  "Stone Mine",
+    "description":  "Mining loop with tool gating, break rewards, and respawn.",
+    "tags":  [
+                 "gathering",
+                 "mining",
+                 "stone"
+             ],
+    "allowedApis":  [
+                        "*"
+                    ],
+    "status":  "draft",
+    "lifecycle":  "active"
+}

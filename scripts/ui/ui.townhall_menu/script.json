@@ -1,0 +1,15 @@
+{
+    "scriptId":  "ui.townhall_menu",
+    "title":  "Town Hall Menu",
+    "description":  "Opens the town hall UI.",
+    "tags":  [
+                 "ui",
+                 "townhall",
+                 "menu"
+             ],
+    "allowedApis":  [
+                        "ui"
+                    ],
+    "status":  "draft",
+    "lifecycle":  "active"
+}

@@ -9,6 +9,7 @@ import {
   ScriptIdMigrationPlan,
   ScriptIdMigrationPlanEntry,
   ScriptIdMigrationResult,
+  SCRIPT_ID_PATTERN,
 } from './types';
 import { normalizeText, uniqueSorted } from './util';
 import { resolveRepoFile, resolveRepoRoot } from './repo';
@@ -46,6 +47,12 @@ export function validateScriptIdMigrationManifest(manifest: ScriptIdMigrationMan
     }
     if (!entry.newScriptId) {
       throw new Error(`Missing newScriptId in migration manifest: ${manifestPath}`);
+    }
+    if (/[\\/]/.test(entry.oldScriptId)) {
+      throw new Error(`oldScriptId must not contain path separators: ${entry.oldScriptId}`);
+    }
+    if (!SCRIPT_ID_PATTERN.test(entry.newScriptId)) {
+      throw new Error(`newScriptId must be a semantic slug: ${entry.newScriptId}`);
     }
     if (entry.oldScriptId === entry.newScriptId) {
       throw new Error(`oldScriptId and newScriptId must differ: ${entry.oldScriptId}`);
@@ -87,9 +94,9 @@ export async function planScriptIdMigration(
     const reasons: string[] = [];
     let ready = true;
 
-    if (existingScriptIds.has(entry.newScriptId)) {
+    if (!existingScriptIds.has(entry.newScriptId)) {
       ready = false;
-      reasons.push('new-script-id-already-exists');
+      reasons.push('new-script-id-missing');
     }
     if (assignments.length === 0) {
       reasons.push('no-assignments-to-update');
@@ -122,6 +129,8 @@ export async function applyScriptIdMigration(
   const plan = await planScriptIdMigration(store, manifest, { manifestPath: options?.manifestPath ?? null });
   const dryRun = options?.dryRun !== false;
   const updatedBy = normalizeText(options?.updatedBy) || 'github-sync';
+  const existingScripts = await store.listScripts();
+  const targetVersions = new Map(existingScripts.map((entry) => [entry.scriptId, entry.record.version]));
 
   let changedCount = 0;
   let assignmentUpdateCount = 0;
@@ -141,6 +150,8 @@ export async function applyScriptIdMigration(
       for (const assignment of assignments) {
         await store.updateAssignment(resolveAssignmentPath(assignment), {
           scriptId: migration.newScriptId,
+          scriptVersion: targetVersions.get(migration.newScriptId) ?? 1,
+          scriptSource: 'firestore',
         });
         assignmentUpdateCount += 1;
       }

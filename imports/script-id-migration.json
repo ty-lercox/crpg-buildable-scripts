@@ -1,0 +1,52 @@
+{
+  "migrations": [
+    {
+      "oldScriptId": "starter.combat.npc_spawn",
+      "newScriptId": "combat.npc_spawn"
+    },
+    {
+      "oldScriptId": "seed_script_weapon_hit_debug",
+      "newScriptId": "debug.weapon_hit"
+    },
+    {
+      "oldScriptId": "dev:furnace_menu",
+      "newScriptId": "ui.furnace_menu"
+    },
+    {
+      "oldScriptId": "dev:mine stone",
+      "newScriptId": "gathering.stone_mine"
+    },
+    {
+      "oldScriptId": "dev:palmchop",
+      "newScriptId": "gathering.tree_chop"
+    },
+    {
+      "oldScriptId": "dev:spawn npc simple",
+      "newScriptId": "combat.npc_spawn"
+    },
+    {
+      "oldScriptId": "dev:starter_pickup_stone",
+      "newScriptId": "gathering.loose_stone_pickup"
+    },
+    {
+      "oldScriptId": "starter.gather.loose_log_pickup",
+      "newScriptId": "gathering.loose_log_pickup"
+    },
+    {
+      "oldScriptId": "starter.gather.loose_stone_pickup",
+      "newScriptId": "gathering.loose_stone_pickup"
+    },
+    {
+      "oldScriptId": "starter.gather.palm_chop",
+      "newScriptId": "gathering.tree_chop"
+    },
+    {
+      "oldScriptId": "starter.gather.stone_mine",
+      "newScriptId": "gathering.stone_mine"
+    },
+    {
+      "oldScriptId": "townhall_menu",
+      "newScriptId": "ui.townhall_menu"
+    }
+  ]
+}

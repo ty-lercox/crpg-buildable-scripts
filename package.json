@@ -10,6 +10,7 @@
     "test": "npm run build && node --test \"dist/tests/**/*.test.js\"",
     "scan-firestore": "npm run build && node dist/cli/scan-firestore.js",
     "import-curated": "npm run build && node dist/cli/import-curated.js",
+    "migrate-script-ids": "npm run build && node dist/cli/migrate-script-ids.js",
     "validate-repo": "npm run build && node dist/cli/validate-repo.js",
     "sync-firestore": "npm run build && node dist/cli/sync-firestore.js"
   },
