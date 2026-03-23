@@ -1,0 +1,15 @@
+{
+  "scriptIds": [
+    "seed_script_npc_master_at_arms_kincaid_dialogue",
+    "seed_script_npc_quartermaster_briggs_dialogue",
+    "seed_script_npc_will_turner_dialogue",
+    "seed_script_weapon_hit_debug",
+    "seed_script_welcome_aboard_deliver_chit",
+    "seed_script_welcome_aboard_return_chit",
+    "starter.combat.npc_spawn",
+    "starter.gather.loose_log_pickup",
+    "starter.gather.loose_stone_pickup",
+    "starter.gather.palm_chop",
+    "starter.gather.stone_mine"
+  ]
+}

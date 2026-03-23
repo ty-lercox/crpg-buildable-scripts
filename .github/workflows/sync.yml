@@ -1,0 +1,128 @@
+name: Buildable Script Sync
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Sync mode
+        required: true
+        default: dry-run
+        type: choice
+        options:
+          - dry-run
+          - apply
+      onlyScriptIds:
+        description: Optional comma-separated script IDs
+        required: false
+        type: string
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Test
+        run: npm test
+
+      - name: Validate Repo
+        run: npm run validate-repo
+
+      - name: Write Firestore Service Account
+        env:
+          FIRESTORE_SERVICE_ACCOUNT_JSON: ${{ secrets.FIRESTORE_SERVICE_ACCOUNT_JSON }}
+        run: |
+          if [ -z "$FIRESTORE_SERVICE_ACCOUNT_JSON" ]; then
+            echo "FIRESTORE_SERVICE_ACCOUNT_JSON secret is required for sync dry-runs." >&2
+            exit 1
+          fi
+          SERVICE_ACCOUNT_PATH="$RUNNER_TEMP/firestore-service-account.json"
+          printf '%s' "$FIRESTORE_SERVICE_ACCOUNT_JSON" > "$SERVICE_ACCOUNT_PATH"
+          echo "GOOGLE_APPLICATION_CREDENTIALS=$SERVICE_ACCOUNT_PATH" >> "$GITHUB_ENV"
+          echo "FIRESTORE_PROJECT_ID=cityrpg-ue5" >> "$GITHUB_ENV"
+
+      - name: Dry-Run Sync
+        env:
+          BUILDABLE_SCRIPTS_UPDATED_BY: ${{ github.actor }}
+        run: |
+          ONLY_ARGS=""
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ -n "${{ inputs.onlyScriptIds }}" ]; then
+            ONLY_ARGS="--only ${{ inputs.onlyScriptIds }}"
+          fi
+          npm run sync-firestore -- --dry-run --report artifacts/sync-report.json $ONLY_ARGS
+
+      - name: Upload Dry-Run Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sync-report
+          path: |
+            artifacts/sync-report.json
+            artifacts/sync-report.md
+
+  apply:
+    if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.mode == 'apply')
+    runs-on: ubuntu-latest
+    needs: validate
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Write Firestore Service Account
+        env:
+          FIRESTORE_SERVICE_ACCOUNT_JSON: ${{ secrets.FIRESTORE_SERVICE_ACCOUNT_JSON }}
+        run: |
+          if [ -z "$FIRESTORE_SERVICE_ACCOUNT_JSON" ]; then
+            echo "FIRESTORE_SERVICE_ACCOUNT_JSON secret is required for sync apply." >&2
+            exit 1
+          fi
+          SERVICE_ACCOUNT_PATH="$RUNNER_TEMP/firestore-service-account.json"
+          printf '%s' "$FIRESTORE_SERVICE_ACCOUNT_JSON" > "$SERVICE_ACCOUNT_PATH"
+          echo "GOOGLE_APPLICATION_CREDENTIALS=$SERVICE_ACCOUNT_PATH" >> "$GITHUB_ENV"
+          echo "FIRESTORE_PROJECT_ID=cityrpg-ue5" >> "$GITHUB_ENV"
+
+      - name: Apply Sync
+        env:
+          BUILDABLE_SCRIPTS_UPDATED_BY: ${{ github.actor }}
+        run: |
+          ONLY_ARGS=""
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ -n "${{ inputs.onlyScriptIds }}" ]; then
+            ONLY_ARGS="--only ${{ inputs.onlyScriptIds }}"
+          fi
+          npm run sync-firestore -- --apply --report artifacts/sync-report.json $ONLY_ARGS
+
+      - name: Upload Apply Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sync-apply-report
+          path: |
+            artifacts/sync-report.json
+            artifacts/sync-report.md

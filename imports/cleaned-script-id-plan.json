@@ -1,0 +1,182 @@
+{
+  "generatedAt": "2026-03-23T17:00:46.481Z",
+  "projectId": "cityrpg-ue5",
+  "namingConvention": "category.subgroup.script_name",
+  "catalog": [
+    {
+      "oldId": "chop_plam",
+      "newId": "gathering.legacy.palm_tree_chop",
+      "relativeDir": "scripts/gathering/legacy/gathering.legacy.palm_tree_chop",
+      "status": "published",
+      "lifecycle": "active",
+      "reason": "assigned-legacy-script"
+    },
+    {
+      "oldId": "npcKillRewards",
+      "newId": "combat.legacy.npc_kill_rewards",
+      "relativeDir": "scripts/combat/legacy/combat.legacy.npc_kill_rewards",
+      "status": "published",
+      "lifecycle": "active",
+      "reason": "assigned-legacy-script"
+    },
+    {
+      "oldId": "seed_script_npc_master_at_arms_kincaid_dialogue",
+      "newId": "npc.dialogue.master_at_arms_kincaid",
+      "relativeDir": "scripts/npc/dialogue/npc.dialogue.master_at_arms_kincaid",
+      "status": "published",
+      "lifecycle": "active",
+      "reason": "assigned-admin-script"
+    },
+    {
+      "oldId": "seed_script_npc_quartermaster_briggs_dialogue",
+      "newId": "npc.dialogue.quartermaster_briggs",
+      "relativeDir": "scripts/npc/dialogue/npc.dialogue.quartermaster_briggs",
+      "status": "published",
+      "lifecycle": "active",
+      "reason": "assigned-admin-script"
+    },
+    {
+      "oldId": "seed_script_npc_will_turner_dialogue",
+      "newId": "npc.dialogue.will_turner",
+      "relativeDir": "scripts/npc/dialogue/npc.dialogue.will_turner",
+      "status": "draft",
+      "lifecycle": "active",
+      "reason": "unassigned-admin-script"
+    },
+    {
+      "oldId": "seed_script_weapon_hit_debug",
+      "newId": "debug.weapon_hit",
+      "relativeDir": "scripts/debug/debug.weapon_hit",
+      "status": "draft",
+      "lifecycle": "active",
+      "reason": "unassigned-admin-script"
+    },
+    {
+      "oldId": "seed_script_welcome_aboard_deliver_chit",
+      "newId": "questing.welcome_aboard.deliver_chit",
+      "relativeDir": "scripts/questing/welcome-aboard/questing.welcome_aboard.deliver_chit",
+      "status": "draft",
+      "lifecycle": "active",
+      "reason": "unassigned-admin-script"
+    },
+    {
+      "oldId": "seed_script_welcome_aboard_return_chit",
+      "newId": "questing.welcome_aboard.return_chit",
+      "relativeDir": "scripts/questing/welcome-aboard/questing.welcome_aboard.return_chit",
+      "status": "published",
+      "lifecycle": "active",
+      "reason": "assigned-admin-script"
+    },
+    {
+      "oldId": "starter.combat.npc_spawn",
+      "newId": "combat.starter.npc_spawn",
+      "relativeDir": "scripts/combat/starter/combat.starter.npc_spawn",
+      "status": "draft",
+      "lifecycle": "active",
+      "reason": "unassigned-admin-script"
+    },
+    {
+      "oldId": "starter.combat.npc_spawn_showcase",
+      "newId": "combat.showcase.npc_spawn",
+      "relativeDir": "scripts/combat/showcase/combat.showcase.npc_spawn",
+      "status": "draft",
+      "lifecycle": "active",
+      "reason": "showcase-variant"
+    },
+    {
+      "oldId": "starter.combat.npc_spawn_simple_showcase",
+      "newId": "combat.showcase.npc_spawn_simple",
+      "relativeDir": "scripts/combat/showcase/combat.showcase.npc_spawn_simple",
+      "status": "draft",
+      "lifecycle": "active",
+      "reason": "showcase-variant"
+    },
+    {
+      "oldId": "starter.gather.loose_log_pickup",
+      "newId": "gathering.starter.loose_log_pickup",
+      "relativeDir": "scripts/gathering/starter/gathering.starter.loose_log_pickup",
+      "status": "published",
+      "lifecycle": "active",
+      "reason": "assigned-admin-script"
+    },
+    {
+      "oldId": "starter.gather.loose_stone_pickup",
+      "newId": "gathering.starter.loose_stone_pickup",
+      "relativeDir": "scripts/gathering/starter/gathering.starter.loose_stone_pickup",
+      "status": "draft",
+      "lifecycle": "active",
+      "reason": "unassigned-admin-script"
+    },
+    {
+      "oldId": "starter.gather.palm_chop",
+      "newId": "gathering.starter.palm_chop",
+      "relativeDir": "scripts/gathering/starter/gathering.starter.palm_chop",
+      "status": "draft",
+      "lifecycle": "active",
+      "reason": "unassigned-admin-script"
+    },
+    {
+      "oldId": "starter.gather.palm_chop_showcase",
+      "newId": "gathering.showcase.palm_chop",
+      "relativeDir": "scripts/gathering/showcase/gathering.showcase.palm_chop",
+      "status": "draft",
+      "lifecycle": "active",
+      "reason": "showcase-variant"
+    },
+    {
+      "oldId": "starter.gather.stone_mine",
+      "newId": "gathering.starter.stone_mine",
+      "relativeDir": "scripts/gathering/starter/gathering.starter.stone_mine",
+      "status": "draft",
+      "lifecycle": "active",
+      "reason": "unassigned-admin-script"
+    },
+    {
+      "oldId": "starter.gather.stone_mine_showcase",
+      "newId": "gathering.showcase.stone_mine",
+      "relativeDir": "scripts/gathering/showcase/gathering.showcase.stone_mine",
+      "status": "draft",
+      "lifecycle": "active",
+      "reason": "showcase-variant"
+    },
+    {
+      "oldId": "townhall_menu",
+      "newId": "ui.civic.townhall_menu",
+      "relativeDir": "scripts/ui/civic/ui.civic.townhall_menu",
+      "status": "draft",
+      "lifecycle": "active",
+      "reason": "legacy-ui-script"
+    },
+    {
+      "oldId": "townhall_spire_enlistment",
+      "newId": "ui.civic.townhall_spire_enlistment",
+      "relativeDir": "scripts/ui/civic/ui.civic.townhall_spire_enlistment",
+      "status": "draft",
+      "lifecycle": "active",
+      "reason": "legacy-ui-script"
+    }
+  ],
+  "localOnly": [
+    {
+      "oldId": "h6deXXhNHFGDsiqVGWDY",
+      "relativeDir": "scripts/user-owned/h6deXXhNHFGDsiqVGWDY",
+      "status": "draft",
+      "lifecycle": "active",
+      "reason": "user-owned-local-only"
+    },
+    {
+      "oldId": "hAPPNStkwEoRtB6v3swx",
+      "relativeDir": "scripts/user-owned/hAPPNStkwEoRtB6v3swx",
+      "status": "draft",
+      "lifecycle": "active",
+      "reason": "user-owned-local-only"
+    },
+    {
+      "oldId": "Sv6RN4PXQIeIlQB1Qu0g",
+      "relativeDir": "scripts/user-owned/Sv6RN4PXQIeIlQB1Qu0g",
+      "status": "draft",
+      "lifecycle": "active",
+      "reason": "user-owned-local-only"
+    }
+  ]
+}

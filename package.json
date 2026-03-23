@@ -1,0 +1,23 @@
+{
+  "name": "cityrpg-buildable-scripts",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Git-backed source repository and Firestore sync tooling for curated CityRPG buildable scripts.",
+  "type": "commonjs",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true });\"",
+    "test": "npm run build && node --test \"dist/tests/**/*.test.js\"",
+    "scan-firestore": "npm run build && node dist/cli/scan-firestore.js",
+    "import-curated": "npm run build && node dist/cli/import-curated.js",
+    "validate-repo": "npm run build && node dist/cli/validate-repo.js",
+    "sync-firestore": "npm run build && node dist/cli/sync-firestore.js"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.9.3"
+  }
+}

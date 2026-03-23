@@ -1,0 +1,8 @@
+node_modules/
+dist/
+artifacts/*
+!artifacts/.gitkeep
+*.log
+*.tmp
+*.local.json
+firestore-service-account.json
