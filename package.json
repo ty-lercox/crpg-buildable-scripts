@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "clean": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true });\"",
-    "test": "npm run build && node --test \"dist/tests/**/*.test.js\"",
+    "test": "npm run build && node tools/run-node-tests.cjs",
     "scan-firestore": "npm run build && node dist/cli/scan-firestore.js",
     "import-curated": "npm run build && node dist/cli/import-curated.js",
     "migrate-script-ids": "npm run build && node dist/cli/migrate-script-ids.js",
