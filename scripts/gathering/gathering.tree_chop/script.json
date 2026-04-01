@@ -1,7 +1,7 @@
 {
     "scriptId":  "gathering.tree_chop",
     "title":  "Tree Chop",
-    "description":  "Tree chopping loop with hit feedback, felling, loot, and respawn.",
+    "description":  "Tree chopping loop with axe tier gating, felling, log rewards, and respawn for tree.",
     "tags":  [
                  "gathering",
                  "woodcutting",

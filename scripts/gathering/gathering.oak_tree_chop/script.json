@@ -1,0 +1,17 @@
+{
+  "scriptId": "gathering.oak_tree_chop",
+  "title": "Oak Tree Chop",
+  "description": "Tree chopping loop with axe tier gating, felling, log rewards, and respawn for oak.",
+  "tags": [
+    "gathering",
+    "woodcutting",
+    "tree",
+    "oak",
+    "logs"
+  ],
+  "allowedApis": [
+    "*"
+  ],
+  "status": "draft",
+  "lifecycle": "active"
+}

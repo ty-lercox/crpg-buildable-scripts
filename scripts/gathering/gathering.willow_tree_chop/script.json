@@ -1,0 +1,17 @@
+{
+  "scriptId": "gathering.willow_tree_chop",
+  "title": "Willow Tree Chop",
+  "description": "Tree chopping loop with axe tier gating, felling, log rewards, and respawn for willow.",
+  "tags": [
+    "gathering",
+    "woodcutting",
+    "tree",
+    "willow",
+    "logs"
+  ],
+  "allowedApis": [
+    "*"
+  ],
+  "status": "draft",
+  "lifecycle": "active"
+}

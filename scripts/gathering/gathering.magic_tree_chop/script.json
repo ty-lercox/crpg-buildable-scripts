@@ -1,0 +1,17 @@
+{
+  "scriptId": "gathering.magic_tree_chop",
+  "title": "Magic Tree Chop",
+  "description": "Tree chopping loop with axe tier gating, felling, log rewards, and respawn for magic tree.",
+  "tags": [
+    "gathering",
+    "woodcutting",
+    "tree",
+    "magic-tree",
+    "logs"
+  ],
+  "allowedApis": [
+    "*"
+  ],
+  "status": "draft",
+  "lifecycle": "active"
+}

@@ -12,15 +12,15 @@ type TreeDefinition = {
 };
 
 const def: TreeDefinition = {
-  label: "Tree",
-  requiredLevel: 1,
+  label: "Oak",
+  requiredLevel: 5,
   requiredAxeLabel: "Wood Axe",
   requiredAxeTokens: ["wood_axe", "axe_wood", "woodaxe", "wood axe"],
-  maxHealth: 5,
-  respawnMs: 60_000,
+  maxHealth: 6,
+  respawnMs: 75_000,
   itemClassPath: "/Game/CRPG/Items/Woodcutting/Item_Log.Item_Log_C",
-  xpOnFell: 25,
-  dropMin: 1,
+  xpOnFell: 35,
+  dropMin: 2,
   dropMax: 5,
 };
 
@@ -44,7 +44,7 @@ type TreeNodeState = {
 };
 
 const nodeStateByBuildable = new Map<string, TreeNodeState>();
-const GLOBAL_COOLDOWN_KEY = "__crpg_tree_chop_cooldowns";
+const GLOBAL_COOLDOWN_KEY = "__crpg_oak_tree_chop_cooldowns";
 const globalAny = globalThis as any;
 const lastHitMsByPlayer: Map<string, number> =
   globalAny[GLOBAL_COOLDOWN_KEY] instanceof Map ? globalAny[GLOBAL_COOLDOWN_KEY] : new Map();
@@ -192,5 +192,5 @@ export function onBeginPlay(ctx: { buildableActorId: string }, api: any) {
   }
 
   api.buildable.setInteractable(false);
-  console.log("[TS][buildables] tree onBeginPlay, interact disabled", ctx.buildableActorId);
+  console.log("[TS][buildables] oak onBeginPlay, interact disabled", ctx.buildableActorId);
 }

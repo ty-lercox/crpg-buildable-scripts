@@ -12,16 +12,16 @@ type TreeDefinition = {
 };
 
 const def: TreeDefinition = {
-  label: "Tree",
-  requiredLevel: 1,
-  requiredAxeLabel: "Wood Axe",
-  requiredAxeTokens: ["wood_axe", "axe_wood", "woodaxe", "wood axe"],
-  maxHealth: 5,
-  respawnMs: 60_000,
+  label: "Yew",
+  requiredLevel: 20,
+  requiredAxeLabel: "Diamond Axe",
+  requiredAxeTokens: ["diamond_axe", "axe_diamond", "diamondaxe", "diamond axe"],
+  maxHealth: 11,
+  respawnMs: 150_000,
   itemClassPath: "/Game/CRPG/Items/Woodcutting/Item_Log.Item_Log_C",
-  xpOnFell: 25,
-  dropMin: 1,
-  dropMax: 5,
+  xpOnFell: 95,
+  dropMin: 3,
+  dropMax: 7,
 };
 
 const SKILL_TAG_WOODCUTTING = "Skill.Woodcutting";
@@ -44,7 +44,7 @@ type TreeNodeState = {
 };
 
 const nodeStateByBuildable = new Map<string, TreeNodeState>();
-const GLOBAL_COOLDOWN_KEY = "__crpg_tree_chop_cooldowns";
+const GLOBAL_COOLDOWN_KEY = "__crpg_yew_tree_chop_cooldowns";
 const globalAny = globalThis as any;
 const lastHitMsByPlayer: Map<string, number> =
   globalAny[GLOBAL_COOLDOWN_KEY] instanceof Map ? globalAny[GLOBAL_COOLDOWN_KEY] : new Map();
@@ -192,5 +192,5 @@ export function onBeginPlay(ctx: { buildableActorId: string }, api: any) {
   }
 
   api.buildable.setInteractable(false);
-  console.log("[TS][buildables] tree onBeginPlay, interact disabled", ctx.buildableActorId);
+  console.log("[TS][buildables] yew onBeginPlay, interact disabled", ctx.buildableActorId);
 }

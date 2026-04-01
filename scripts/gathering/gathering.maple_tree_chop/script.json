@@ -1,0 +1,17 @@
+{
+  "scriptId": "gathering.maple_tree_chop",
+  "title": "Maple Tree Chop",
+  "description": "Tree chopping loop with axe tier gating, felling, log rewards, and respawn for maple.",
+  "tags": [
+    "gathering",
+    "woodcutting",
+    "tree",
+    "maple",
+    "logs"
+  ],
+  "allowedApis": [
+    "*"
+  ],
+  "status": "draft",
+  "lifecycle": "active"
+}

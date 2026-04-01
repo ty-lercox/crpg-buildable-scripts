@@ -1,0 +1,17 @@
+{
+  "scriptId": "gathering.yew_tree_chop",
+  "title": "Yew Tree Chop",
+  "description": "Tree chopping loop with axe tier gating, felling, log rewards, and respawn for yew.",
+  "tags": [
+    "gathering",
+    "woodcutting",
+    "tree",
+    "yew",
+    "logs"
+  ],
+  "allowedApis": [
+    "*"
+  ],
+  "status": "draft",
+  "lifecycle": "active"
+}
