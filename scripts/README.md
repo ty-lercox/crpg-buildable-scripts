@@ -10,6 +10,14 @@ Current grouping intent:
   - active combat scripts
 - `ui/`
   - active UI entrypoints like town hall, bank, furnace, and similar menu openers
+- `civic/`
+  - runtime custody anchors and future civic routing surfaces
+- `pickup/`
+  - loose-item pickup wrappers for ore, gems, packages, and similar portable world loot
+- `reward/`
+  - chest or reward-cache scripts grouped by loot tier
+- `progression/`
+  - XP grant surfaces and similar progression-focused world interactions
 - `debug/`
   - debug or diagnostic scripts
 

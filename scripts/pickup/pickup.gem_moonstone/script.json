@@ -1,0 +1,18 @@
+{
+  "scriptId": "pickup.gem_moonstone",
+  "title": "Pickup Moonstone",
+  "description": "Loose moonstone pickup with hide, respawn, and inventory grant behavior.",
+  "tags": [
+    "pickup",
+    "gem",
+    "moonstone",
+    "mining"
+  ],
+  "allowedApis": [
+    "buildable",
+    "inventory",
+    "toastTo"
+  ],
+  "status": "draft",
+  "lifecycle": "active"
+}

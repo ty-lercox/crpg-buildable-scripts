@@ -1,0 +1,18 @@
+{
+  "scriptId": "pickup.package_laptop_parts",
+  "title": "Pickup Laptop Parts",
+  "description": "Loose laptop parts pickup with hide, respawn, and inventory grant behavior.",
+  "tags": [
+    "pickup",
+    "package",
+    "laptop_parts",
+    "mining"
+  ],
+  "allowedApis": [
+    "buildable",
+    "inventory",
+    "toastTo"
+  ],
+  "status": "draft",
+  "lifecycle": "active"
+}

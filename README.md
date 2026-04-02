@@ -16,6 +16,10 @@ Current grouping examples:
 - `scripts/gathering/gathering.loose_log_pickup/`
 - `scripts/gathering/gathering.tree_chop/`
 - `scripts/ui/ui.townhall_menu/`
+- `scripts/civic/civic.custody_intake/`
+- `scripts/pickup/pickup.ore_copper/`
+- `scripts/reward/reward.chest_tier_1/`
+- `scripts/progression/progression.xp_mining_small/`
 
 Legacy and local-only backups that should not publish stay outside the managed surface in `scripts_legacy/`, for example:
 

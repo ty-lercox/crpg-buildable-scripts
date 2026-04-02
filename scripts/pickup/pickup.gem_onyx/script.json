@@ -1,0 +1,18 @@
+{
+  "scriptId": "pickup.gem_onyx",
+  "title": "Pickup Onyx",
+  "description": "Loose onyx pickup with hide, respawn, and inventory grant behavior.",
+  "tags": [
+    "pickup",
+    "gem",
+    "onyx",
+    "mining"
+  ],
+  "allowedApis": [
+    "buildable",
+    "inventory",
+    "toastTo"
+  ],
+  "status": "draft",
+  "lifecycle": "active"
+}

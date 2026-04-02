@@ -1,0 +1,18 @@
+{
+  "scriptId": "reward.chest_tier_2",
+  "title": "Reward Chest Tier 2",
+  "description": "Mid-tier reward chest with ore, gems, and package rewards.",
+  "tags": [
+    "reward",
+    "chest",
+    "loot",
+    "tier2"
+  ],
+  "allowedApis": [
+    "buildable",
+    "inventory",
+    "toastTo"
+  ],
+  "status": "draft",
+  "lifecycle": "active"
+}

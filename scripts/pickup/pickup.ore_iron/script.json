@@ -1,0 +1,18 @@
+{
+  "scriptId": "pickup.ore_iron",
+  "title": "Pickup Iron Ore",
+  "description": "Loose iron ore pickup with hide, respawn, and inventory grant behavior.",
+  "tags": [
+    "pickup",
+    "ore",
+    "iron",
+    "mining"
+  ],
+  "allowedApis": [
+    "buildable",
+    "inventory",
+    "toastTo"
+  ],
+  "status": "draft",
+  "lifecycle": "active"
+}

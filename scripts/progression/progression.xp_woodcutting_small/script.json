@@ -1,0 +1,17 @@
+{
+  "scriptId": "progression.xp_woodcutting_small",
+  "title": "Woodcutting XP Grant Small",
+  "description": "Grants a small amount of Woodcutting XP with a shared cooldown.",
+  "tags": [
+    "progression",
+    "xp",
+    "woodcutting"
+  ],
+  "allowedApis": [
+    "buildable",
+    "skills",
+    "toastTo"
+  ],
+  "status": "draft",
+  "lifecycle": "active"
+}

@@ -1,0 +1,17 @@
+{
+  "scriptId": "progression.xp_mining_small",
+  "title": "Mining XP Grant Small",
+  "description": "Grants a small amount of Mining XP with a shared cooldown.",
+  "tags": [
+    "progression",
+    "xp",
+    "mining"
+  ],
+  "allowedApis": [
+    "buildable",
+    "skills",
+    "toastTo"
+  ],
+  "status": "draft",
+  "lifecycle": "active"
+}

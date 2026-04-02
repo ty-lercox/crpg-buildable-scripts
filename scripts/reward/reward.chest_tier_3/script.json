@@ -1,0 +1,18 @@
+{
+  "scriptId": "reward.chest_tier_3",
+  "title": "Reward Chest Tier 3",
+  "description": "High-tier reward chest with rare ores, gems, contraband, and weapon rewards.",
+  "tags": [
+    "reward",
+    "chest",
+    "loot",
+    "tier3"
+  ],
+  "allowedApis": [
+    "buildable",
+    "inventory",
+    "toastTo"
+  ],
+  "status": "draft",
+  "lifecycle": "active"
+}

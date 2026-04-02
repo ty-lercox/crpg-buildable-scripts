@@ -1,0 +1,16 @@
+{
+  "scriptId": "gathering.gold_mine",
+  "title": "Gold Mine",
+  "description": "Mining loop with pickaxe tier gating, break rewards, and respawn for gold.",
+  "tags": [
+    "gathering",
+    "mining",
+    "ore",
+    "gold"
+  ],
+  "allowedApis": [
+    "*"
+  ],
+  "status": "draft",
+  "lifecycle": "active"
+}

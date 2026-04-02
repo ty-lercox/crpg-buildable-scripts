@@ -1,0 +1,18 @@
+{
+  "scriptId": "pickup.ore_diamond",
+  "title": "Pickup Diamond Ore",
+  "description": "Loose diamond ore pickup with hide, respawn, and inventory grant behavior.",
+  "tags": [
+    "pickup",
+    "ore",
+    "diamond",
+    "mining"
+  ],
+  "allowedApis": [
+    "buildable",
+    "inventory",
+    "toastTo"
+  ],
+  "status": "draft",
+  "lifecycle": "active"
+}

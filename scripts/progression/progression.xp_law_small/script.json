@@ -1,0 +1,17 @@
+{
+  "scriptId": "progression.xp_law_small",
+  "title": "Law XP Grant Small",
+  "description": "Grants a small amount of Law XP with a shared cooldown.",
+  "tags": [
+    "progression",
+    "xp",
+    "law"
+  ],
+  "allowedApis": [
+    "buildable",
+    "skills",
+    "toastTo"
+  ],
+  "status": "draft",
+  "lifecycle": "active"
+}

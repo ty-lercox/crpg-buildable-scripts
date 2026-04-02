@@ -1,0 +1,16 @@
+{
+  "scriptId": "gathering.iron_mine",
+  "title": "Iron Mine",
+  "description": "Mining loop with pickaxe tier gating, break rewards, and respawn for iron.",
+  "tags": [
+    "gathering",
+    "mining",
+    "ore",
+    "iron"
+  ],
+  "allowedApis": [
+    "*"
+  ],
+  "status": "draft",
+  "lifecycle": "active"
+}

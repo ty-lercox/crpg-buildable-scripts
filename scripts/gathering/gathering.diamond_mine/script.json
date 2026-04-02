@@ -1,0 +1,16 @@
+{
+  "scriptId": "gathering.diamond_mine",
+  "title": "Diamond Mine",
+  "description": "Mining loop with pickaxe tier gating, break rewards, and respawn for diamond.",
+  "tags": [
+    "gathering",
+    "mining",
+    "ore",
+    "diamond"
+  ],
+  "allowedApis": [
+    "*"
+  ],
+  "status": "draft",
+  "lifecycle": "active"
+}

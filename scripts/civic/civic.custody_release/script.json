@@ -1,0 +1,16 @@
+{
+  "scriptId": "civic.custody_release",
+  "title": "Custody Release",
+  "description": "Registers the buildable as the runtime custody release anchor.",
+  "tags": [
+    "civic",
+    "custody",
+    "release",
+    "prison"
+  ],
+  "allowedApis": [
+    "buildable.registerPrisonRelease"
+  ],
+  "status": "draft",
+  "lifecycle": "active"
+}

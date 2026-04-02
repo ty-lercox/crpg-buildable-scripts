@@ -1,0 +1,18 @@
+{
+  "scriptId": "pickup.ore_gold",
+  "title": "Pickup Gold Ore",
+  "description": "Loose gold ore pickup with hide, respawn, and inventory grant behavior.",
+  "tags": [
+    "pickup",
+    "ore",
+    "gold",
+    "mining"
+  ],
+  "allowedApis": [
+    "buildable",
+    "inventory",
+    "toastTo"
+  ],
+  "status": "draft",
+  "lifecycle": "active"
+}

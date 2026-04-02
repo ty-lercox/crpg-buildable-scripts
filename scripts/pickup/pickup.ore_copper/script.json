@@ -1,0 +1,18 @@
+{
+  "scriptId": "pickup.ore_copper",
+  "title": "Pickup Copper Ore",
+  "description": "Loose copper ore pickup with hide, respawn, and inventory grant behavior.",
+  "tags": [
+    "pickup",
+    "ore",
+    "copper",
+    "mining"
+  ],
+  "allowedApis": [
+    "buildable",
+    "inventory",
+    "toastTo"
+  ],
+  "status": "draft",
+  "lifecycle": "active"
+}

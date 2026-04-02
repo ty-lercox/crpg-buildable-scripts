@@ -1,0 +1,18 @@
+{
+  "scriptId": "reward.chest_tier_1",
+  "title": "Reward Chest Tier 1",
+  "description": "Low-tier reward chest with starter materials and a small gem chance.",
+  "tags": [
+    "reward",
+    "chest",
+    "loot",
+    "tier1"
+  ],
+  "allowedApis": [
+    "buildable",
+    "inventory",
+    "toastTo"
+  ],
+  "status": "draft",
+  "lifecycle": "active"
+}
