@@ -1,0 +1,17 @@
+{
+  "scriptId": "ui.laundering_menu",
+  "title": "Laundering Menu",
+  "description": "Opens the dirty money laundering UI.",
+  "tags": [
+    "ui",
+    "laundering",
+    "dirty-money",
+    "smuggler",
+    "menu"
+  ],
+  "allowedApis": [
+    "ui"
+  ],
+  "status": "draft",
+  "lifecycle": "active"
+}

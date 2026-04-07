@@ -1,0 +1,19 @@
+{
+  "scriptId": "civic.townhall.registry",
+  "title": "Civic Town Hall Registry",
+  "description": "Opens the runtime Town Hall civic registry for jobs, nations, elections, treasury, and property controls.",
+  "tags": [
+    "civic",
+    "townhall",
+    "registry",
+    "governance",
+    "nation",
+    "election",
+    "treasury"
+  ],
+  "allowedApis": [
+    "ui"
+  ],
+  "status": "draft",
+  "lifecycle": "active"
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Buildable Script Followthrough"
+  short_description: "Derive, implement, and publish gameplay scripts"
+  default_prompt: "Use $cityrpg-buildable-script-followthrough to analyze recent gameplay feature work, derive missing buildable scripts, implement them, validate the repo, and sync the ready scripts to Firestore."

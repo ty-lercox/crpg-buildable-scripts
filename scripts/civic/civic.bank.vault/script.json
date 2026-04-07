@@ -1,0 +1,17 @@
+{
+  "scriptId": "civic.bank.vault",
+  "title": "Civic Bank Vault",
+  "description": "Registers the buildable as the runtime town bank vault surface and opens the heist view.",
+  "tags": [
+    "civic",
+    "bank",
+    "vault",
+    "heist"
+  ],
+  "allowedApis": [
+    "ui",
+    "buildable.registerBankVaultPoint"
+  ],
+  "status": "draft",
+  "lifecycle": "active"
+}

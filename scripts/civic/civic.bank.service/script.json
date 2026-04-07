@@ -1,0 +1,17 @@
+{
+  "scriptId": "civic.bank.service",
+  "title": "Civic Bank Service",
+  "description": "Registers the buildable as the runtime bank service surface and syncs bank region plus UI state.",
+  "tags": [
+    "civic",
+    "bank",
+    "service"
+  ],
+  "allowedApis": [
+    "ui",
+    "player.setRegion",
+    "buildable.registerBankServicePoint"
+  ],
+  "status": "draft",
+  "lifecycle": "active"
+}

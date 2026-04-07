@@ -1,0 +1,15 @@
+{
+  "scriptId": "civic.furnace.public",
+  "title": "Civic Furnace Public",
+  "description": "Opens the runtime public furnace view.",
+  "tags": [
+    "civic",
+    "furnace",
+    "public"
+  ],
+  "allowedApis": [
+    "ui"
+  ],
+  "status": "draft",
+  "lifecycle": "active"
+}

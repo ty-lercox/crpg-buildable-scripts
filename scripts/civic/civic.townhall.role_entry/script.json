@@ -1,0 +1,19 @@
+{
+  "scriptId": "civic.townhall.role_entry",
+  "title": "Civic Town Hall Governance Entry",
+  "description": "Opens the runtime Town Hall governance desk for nation roles, elections, and treasury controls.",
+  "tags": [
+    "civic",
+    "townhall",
+    "roles",
+    "governance",
+    "nation",
+    "election",
+    "treasury"
+  ],
+  "allowedApis": [
+    "ui"
+  ],
+  "status": "draft",
+  "lifecycle": "active"
+}

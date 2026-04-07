@@ -1,0 +1,15 @@
+{
+  "scriptId": "civic.custody.intake",
+  "title": "Civic Custody Intake",
+  "description": "Registers the buildable as the runtime custody intake anchor.",
+  "tags": [
+    "civic",
+    "custody",
+    "intake"
+  ],
+  "allowedApis": [
+    "buildable.registerPrisonIntake"
+  ],
+  "status": "draft",
+  "lifecycle": "active"
+}

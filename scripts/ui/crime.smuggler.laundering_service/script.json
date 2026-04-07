@@ -1,0 +1,17 @@
+{
+  "scriptId": "crime.smuggler.laundering_service",
+  "title": "Crime Smuggler Laundering Service",
+  "description": "Opens the dirty money laundering UI through the smuggler service surface.",
+  "tags": [
+    "crime",
+    "smuggler",
+    "laundering",
+    "dirty-money",
+    "ui"
+  ],
+  "allowedApis": [
+    "ui"
+  ],
+  "status": "draft",
+  "lifecycle": "active"
+}

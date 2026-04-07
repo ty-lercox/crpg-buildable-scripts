@@ -1,11 +1,15 @@
 {
     "scriptId":  "ui.townhall_menu",
-    "title":  "Town Hall Menu",
-    "description":  "Opens the town hall UI.",
+    "title":  "Town Hall Civic Menu",
+    "description":  "Opens the Town Hall civic menu for jobs, nations, elections, treasury, and properties.",
     "tags":  [
                  "ui",
                  "townhall",
-                 "menu"
+                 "menu",
+                 "governance",
+                 "nation",
+                 "election",
+                 "treasury"
              ],
     "allowedApis":  [
                         "ui"
