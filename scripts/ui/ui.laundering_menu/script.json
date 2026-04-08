@@ -10,6 +10,7 @@
     "menu"
   ],
   "allowedApis": [
+    "audio",
     "ui"
   ],
   "status": "draft",

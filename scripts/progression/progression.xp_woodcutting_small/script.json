@@ -8,6 +8,7 @@
     "woodcutting"
   ],
   "allowedApis": [
+    "audio",
     "buildable",
     "skills",
     "toastTo"

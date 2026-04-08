@@ -8,6 +8,7 @@
     "mining"
   ],
   "allowedApis": [
+    "audio",
     "buildable",
     "skills",
     "toastTo"

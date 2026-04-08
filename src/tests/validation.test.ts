@@ -21,6 +21,26 @@ test('validate-repo: valid repo package loads and validates', () => {
   }
 });
 
+test('validate-repo: AUDIO refs stay in script text without catalog inlining', () => {
+  const repoRoot = createTempRepo();
+  try {
+    writeRepoScript(
+      repoRoot,
+      { scriptId: 'ui.bank_menu', title: 'Bank Menu', allowedApis: ['audio', 'ui'] },
+      'export function onInteract(ctx, api) { api.audio.playOneShotForPlayer(ctx.playerId, AUDIO.ui.menu.open); api.ui.openBankView(); }\n'
+    );
+
+    const scripts = listRepoScripts(repoRoot);
+    validateLoadedRepoScripts(scripts);
+
+    assert.equal(scripts.length, 1);
+    assert.equal((scripts[0]?.scriptText ?? '').includes('const AUDIO ='), false);
+    assert.equal((scripts[0]?.scriptText ?? '').includes('AUDIO.ui.menu.open'), true);
+  } finally {
+    cleanupTempRepo(repoRoot);
+  }
+});
+
 test('validate-repo: invalid status fails loudly', () => {
   const repoRoot = createTempRepo();
   try {
@@ -73,6 +93,19 @@ test('validate-repo: duplicate script ids across folders are rejected', () => {
     );
     fs.writeFileSync(path.join(otherDir, 'script.ts'), 'export const b = 2;\n', 'utf8');
     assert.throws(() => listRepoScripts(repoRoot), /duplicate repo-managed scriptId/i);
+  } finally {
+    cleanupTempRepo(repoRoot);
+  }
+});
+
+test('validate-repo: scripts without shared audio refs are not rewritten', () => {
+  const repoRoot = createTempRepo();
+  try {
+    const scriptText = 'export function onInteract() { return true; }\n';
+    writeRepoScript(repoRoot, { scriptId: 'starter.gather.no_audio_helper', title: 'No Audio Helper' }, scriptText);
+
+    const scripts = listRepoScripts(repoRoot);
+    assert.equal(scripts[0]?.scriptText, scriptText);
   } finally {
     cleanupTempRepo(repoRoot);
   }

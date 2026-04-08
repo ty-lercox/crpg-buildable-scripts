@@ -9,6 +9,7 @@
     "heist"
   ],
   "allowedApis": [
+    "audio",
     "ui",
     "buildable.registerBankVaultPoint"
   ],

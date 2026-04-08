@@ -31,14 +31,16 @@ const DISABLE_INTERACT_OUTLINE = true;
 const TREE_FALL_IMPULSE_STRENGTH = 90_000;
 const TREE_FALL_UPWARD_IMPULSE = 32_000;
 
-const HIT_SFX = "woodcutting.palm.hit";
+const HIT_SFX = AUDIO.gathering.woodcutting.regular.hit;
+const CRACK_SFX = AUDIO.gathering.woodcutting.regular.crack.phase1;
 const HIT_VFX = "woodcutting.palm.hit.placeholder";
-const FELLED_SFX = "woodcutting.palm.felled";
+const FELLED_SFX = AUDIO.gathering.woodcutting.regular.break;
 const CHOP_MONTAGE = "gathering.woodcutting.chop";
 
 type TreeNodeState = {
   depleted: boolean;
   health: number;
+  crackPlayed: boolean;
   respawnAtMs: number;
   respawnTimer?: any;
 };
@@ -63,7 +65,7 @@ function formatSeconds(ms: number): string {
 function getNodeState(buildableActorId: string): TreeNodeState {
   const key = (buildableActorId ?? "").trim();
   if (!key) {
-    return { depleted: false, health: def.maxHealth, respawnAtMs: 0 };
+    return { depleted: false, health: def.maxHealth, crackPlayed: false, respawnAtMs: 0 };
   }
 
   const existing = nodeStateByBuildable.get(key);
@@ -74,6 +76,7 @@ function getNodeState(buildableActorId: string): TreeNodeState {
   const created: TreeNodeState = {
     depleted: false,
     health: def.maxHealth,
+    crackPlayed: false,
     respawnAtMs: 0,
     respawnTimer: undefined,
   };
@@ -92,6 +95,7 @@ function startRespawnTimer(buildableActorId: string, onRespawn?: () => void) {
   state.respawnTimer = setTimeout(() => {
     state.depleted = false;
     state.health = def.maxHealth;
+    state.crackPlayed = false;
     state.respawnAtMs = 0;
     state.respawnTimer = undefined;
     if (onRespawn) {
@@ -143,6 +147,11 @@ function tryChop(api: any, buildableActorId: string, playerId: string, source: s
   api.vfx.playOneShotAtHit(HIT_VFX, { scale: 1.0, radius: 1200, alignToSurfaceNormal: true });
   if (SHOW_DAMAGE_TOAST) {
     api.toastTo(playerId, `${def.label} hit for ${damage}. HP ${state.health}/${def.maxHealth}`);
+  }
+
+  if (!state.crackPlayed && state.health > 0 && state.health <= Math.max(1, Math.floor(def.maxHealth / 2))) {
+    state.crackPlayed = true;
+    api.audio.playOneShotAtBuildable(CRACK_SFX, { volume: 0.55, radius: 1000, pitch: 1.0 });
   }
 
   if (state.health > 0) {

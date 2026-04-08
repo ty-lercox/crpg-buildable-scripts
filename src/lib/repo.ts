@@ -158,6 +158,8 @@ export function listRepoScripts(repoRoot: string, onlyScriptIds: string[] = []):
     }
     seenIds.add(metadata.scriptId);
 
+    // Buildable scripts can reference AUDIO.* directly; the CRPG runtime now injects that
+    // binding once at compile time instead of inlining the whole catalog into every script.
     const scriptText = fs.readFileSync(scriptPath, 'utf8');
     validateBuildableScriptSource(scriptText, scriptPath);
 

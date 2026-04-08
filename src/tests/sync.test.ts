@@ -34,6 +34,27 @@ test('sync-firestore: creates repo-managed scripts without touching unrelated do
   }
 });
 
+test('sync-firestore: AUDIO refs publish without inlining the shared audio catalog', async () => {
+  const repoRoot = createTempRepo();
+  try {
+    writeRepoScript(
+      repoRoot,
+      { scriptId: 'ui.bank_menu', title: 'Bank Menu', allowedApis: ['audio', 'ui'] },
+      'export function onInteract(ctx, api) { api.audio.playOneShotForPlayer(ctx.playerId, AUDIO.ui.menu.open); api.ui.openBankView(); }\n'
+    );
+
+    const store = new MemoryScriptCatalogStore();
+    const result = await syncFirestoreScripts(store, { repoRoot, dryRun: false });
+    const liveScriptText = String(store.scripts.get('ui.bank_menu')?.scriptText ?? '');
+
+    assert.equal(result.changedCount, 1);
+    assert.equal(liveScriptText.includes('const AUDIO ='), false);
+    assert.equal(liveScriptText.includes('AUDIO.ui.menu.open'), true);
+  } finally {
+    cleanupTempRepo(repoRoot);
+  }
+});
+
 test('sync-firestore: metadata-only updates preserve version and still queue refresh', async () => {
   const repoRoot = createTempRepo();
   try {

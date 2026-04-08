@@ -12,6 +12,7 @@
                  "treasury"
              ],
     "allowedApis":  [
+                        "audio",
                         "ui"
                     ],
     "status":  "draft",

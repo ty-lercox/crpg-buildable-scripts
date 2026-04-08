@@ -2,6 +2,8 @@ const SURFACE_LABEL = 'law training';
 const SKILL_TAG = 'Skill.Law';
 const XP_AMOUNT = 25;
 const COOLDOWN_MS = 90_000;
+const REWARD_SFX = AUDIO.ui.notify.reward.small;
+const DENIED_SFX = AUDIO.ui.notify.outcome.bad.small;
 
 type GrantState = {
   available: boolean;
@@ -81,11 +83,13 @@ export function onInteract(ctx: { playerId?: string; buildableActorId: string },
   const state = getGrantState(buildableActorId);
   if (!state.available) {
     const remainingMs = state.readyAtMs > 0 ? state.readyAtMs - Date.now() : 0;
+    api.audio.playOneShotForPlayer(playerId, DENIED_SFX, { volume: 0.9 });
     api.toastTo(playerId, `${SURFACE_LABEL} is on cooldown for ${formatSeconds(remainingMs)}.`);
     return;
   }
 
   if (!api.skills.addXp(SKILL_TAG, XP_AMOUNT)) {
+    api.audio.playOneShotForPlayer(playerId, DENIED_SFX, { volume: 1.0 });
     api.toastTo(playerId, `Could not grant ${SURFACE_LABEL} XP.`);
     return;
   }
@@ -93,5 +97,6 @@ export function onInteract(ctx: { playerId?: string; buildableActorId: string },
   state.available = false;
   api.buildable.setInteractable(false);
   scheduleReset(buildableActorId, api);
+  api.audio.playOneShotForPlayer(playerId, REWARD_SFX, { volume: 0.95 });
   api.toastTo(playerId, `+${XP_AMOUNT} Law XP. Available again in ${formatSeconds(COOLDOWN_MS)}.`);
 }

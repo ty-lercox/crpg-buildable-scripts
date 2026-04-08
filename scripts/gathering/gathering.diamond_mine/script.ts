@@ -37,9 +37,10 @@ const SHOW_DAMAGE_TOAST = true;
 const DISABLE_INTERACT_OUTLINE = true;
 const DEPLETED_SCALE_MULTIPLIER = 0.1;
 
-const HIT_SFX = "mining.stone.hit";
+const HIT_SFX = AUDIO.gathering.mining.stone.hit;
+const CRACK_SFX = AUDIO.gathering.mining.stone.crack.phase1;
 const HIT_VFX = "mining.stone.hit.placeholder";
-const BROKE_SFX = "mining.stone.break";
+const BROKE_SFX = AUDIO.gathering.mining.stone.break;
 const MINE_MONTAGE = "gathering.mining.swing";
 
 const def = (ORE_DEFINITIONS as any)[ORE_TYPE] ?? ORE_DEFINITIONS.diamond;
@@ -47,6 +48,7 @@ const def = (ORE_DEFINITIONS as any)[ORE_TYPE] ?? ORE_DEFINITIONS.diamond;
 type OreNodeState = {
   depleted: boolean;
   health: number;
+  crackPlayed: boolean;
   respawnAtMs: number;
   respawnTimer?: any;
 };
@@ -71,7 +73,7 @@ function formatSeconds(ms: number): string {
 function getNodeState(buildableActorId: string): OreNodeState {
   const key = (buildableActorId ?? "").trim();
   if (!key) {
-    return { depleted: false, health: def.maxHealth, respawnAtMs: 0 };
+    return { depleted: false, health: def.maxHealth, crackPlayed: false, respawnAtMs: 0 };
   }
 
   const existing = nodeStateByBuildable.get(key);
@@ -82,6 +84,7 @@ function getNodeState(buildableActorId: string): OreNodeState {
   const created: OreNodeState = {
     depleted: false,
     health: def.maxHealth,
+    crackPlayed: false,
     respawnAtMs: 0,
     respawnTimer: undefined,
   };
@@ -100,6 +103,7 @@ function startRespawnTimer(buildableActorId: string, api: any) {
   state.respawnTimer = setTimeout(() => {
     state.depleted = false;
     state.health = def.maxHealth;
+    state.crackPlayed = false;
     state.respawnAtMs = 0;
     state.respawnTimer = undefined;
     api.buildable.restore();
@@ -150,6 +154,11 @@ function tryMine(api: any, buildableActorId: string, playerId: string, source: s
   api.vfx.playOneShotAtHit(HIT_VFX, { scale: 1.0, radius: 1200, alignToSurfaceNormal: true });
   if (SHOW_DAMAGE_TOAST) {
     api.toastTo(playerId, `${def.label} hit for ${damage}. HP ${state.health}/${def.maxHealth}`);
+  }
+
+  if (!state.crackPlayed && state.health > 0 && state.health <= Math.max(1, Math.floor(def.maxHealth / 2))) {
+    state.crackPlayed = true;
+    api.audio.playOneShotAtBuildable(CRACK_SFX, { volume: 0.55, radius: 1000, pitch: 1.0 });
   }
 
   if (state.health > 0) {

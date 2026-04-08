@@ -2,6 +2,8 @@ const ITEM_LABEL = 'log';
 const ITEM_CLASS_PATH = '/Game/CRPG/Items/Woodcutting/Item_Log.Item_Log_C';
 const RESPAWN_DELAY_MS = 60_000;
 const HIDDEN_SCALE_MULTIPLIER = 0.01;
+const PICKUP_SFX = AUDIO.interaction.pickup;
+const DENIED_SFX = AUDIO.interaction.denied;
 
 type PickupState = {
   available: boolean;
@@ -87,6 +89,7 @@ export function onInteract(ctx: { playerId?: string; buildableActorId: string },
   const state = getPickupState(buildableActorId);
   if (!state.available) {
     const remainingRespawnMs = state.respawnAtMs > 0 ? state.respawnAtMs - Date.now() : 0;
+    api.audio.playOneShotForPlayer(playerId, DENIED_SFX, { volume: 0.9 });
     api.toastTo(playerId, `${ITEM_LABEL} already picked up. Respawns in ${formatSeconds(remainingRespawnMs)}.`);
     return;
   }
@@ -95,6 +98,7 @@ export function onInteract(ctx: { playerId?: string; buildableActorId: string },
   const granted = api.inventory.addItemByClassPath(ITEM_CLASS_PATH, 1);
   if (!granted) {
     state.available = true;
+    api.audio.playOneShotForPlayer(playerId, DENIED_SFX, { volume: 1.0 });
     api.toastTo(playerId, `Could not pick up ${ITEM_LABEL}.`);
     return;
   }
@@ -102,5 +106,6 @@ export function onInteract(ctx: { playerId?: string; buildableActorId: string },
   api.buildable.setInteractable(false);
   api.buildable.setScale(HIDDEN_SCALE_MULTIPLIER);
   scheduleRespawn(buildableActorId, api);
+  api.audio.playOneShotForPlayer(playerId, PICKUP_SFX, { volume: 1.0 });
   api.toastTo(playerId, `Picked up 1 ${ITEM_LABEL}. Respawns in ${formatSeconds(RESPAWN_DELAY_MS)}.`);
 }

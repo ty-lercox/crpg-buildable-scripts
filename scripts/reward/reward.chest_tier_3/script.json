@@ -9,6 +9,7 @@
     "tier3"
   ],
   "allowedApis": [
+    "audio",
     "buildable",
     "inventory",
     "toastTo"

@@ -1,6 +1,8 @@
 const CHEST_LABEL = 'Tier 2 reward chest';
 const RESPAWN_DELAY_MS = 480_000;
 const HIDDEN_SCALE_MULTIPLIER = 0.01;
+const LOOT_SFX = AUDIO.ui.notify.reward.big;
+const DENIED_SFX = AUDIO.ui.notify.outcome.bad.small;
 
 type RewardEntry = {
   label: string;
@@ -146,6 +148,7 @@ export function onInteract(ctx: { playerId?: string; buildableActorId: string },
   const state = getChestState(buildableActorId);
   if (!state.available) {
     const remainingMs = state.respawnAtMs > 0 ? state.respawnAtMs - Date.now() : 0;
+    api.audio.playOneShotForPlayer(playerId, DENIED_SFX, { volume: 0.9 });
     api.toastTo(playerId, `${CHEST_LABEL} is empty. Refills in ${formatSeconds(remainingMs)}.`);
     return;
   }
@@ -153,6 +156,7 @@ export function onInteract(ctx: { playerId?: string; buildableActorId: string },
   const reward = pickReward();
   const count = randInt(reward.minCount, reward.maxCount);
   if (!api.inventory.addItemByClassPath(reward.itemClassPath, count)) {
+    api.audio.playOneShotForPlayer(playerId, DENIED_SFX, { volume: 1.0 });
     api.toastTo(playerId, `Could not loot ${CHEST_LABEL}.`);
     return;
   }
@@ -161,5 +165,6 @@ export function onInteract(ctx: { playerId?: string; buildableActorId: string },
   api.buildable.setInteractable(false);
   api.buildable.setScale(HIDDEN_SCALE_MULTIPLIER);
   scheduleRespawn(buildableActorId, api);
+  api.audio.playOneShotForPlayer(playerId, LOOT_SFX, { volume: 1.0 });
   api.toastTo(playerId, `Looted ${count} ${reward.label}. Refills in ${formatSeconds(RESPAWN_DELAY_MS)}.`);
 }
